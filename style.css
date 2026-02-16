@@ -412,6 +412,12 @@ h3,
     cursor: pointer;
 }
 
+@media (min-width: 769px) {
+    .header-controls .menu-toggle {
+        display: none;
+    }
+}
+
 /* Hero Section Refined */
 .hero-section {
     padding: 2rem 1.5rem;
