@@ -1,11 +1,13 @@
 :root {
-    --primary-color: #0c1e33;
-    --secondary-color: #1a3a5f;
-    --accent-color: #d4af37;
-    /* Gold for a premium feel */
+    --primary-color: #1e40af;
+    /* Deep blue */
+    --secondary-color: #3b82f6;
+    /* Bright blue */
+    --accent-color: #60a5fa;
+    /* Light blue accent */
     --text-color: #333;
     --text-light: #666;
-    --bg-light: #f8f9fa;
+    --bg-light: #f8fafc;
     --white: #ffffff;
     --sidebar-width: 320px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -188,8 +190,8 @@ h3,
 
 .logo-icon {
     font-size: 1.5rem;
-    color: #1a5663;
-    background: #f1f5f9;
+    color: #3b82f6;
+    background: #eff6ff;
     width: 44px;
     height: 44px;
     display: flex;
@@ -293,8 +295,8 @@ h3,
 }
 
 .search-btn {
-    background: #0f766e;
-    /* Accurate Teal from screenshot */
+    background: #3b82f6;
+    /* Bright blue */
     color: white;
     border: none;
     padding: 0.85rem;
@@ -310,7 +312,7 @@ h3,
 }
 
 .search-btn:hover {
-    background: #0d9488;
+    background: #2563eb;
 }
 
 .footer-note {
@@ -380,7 +382,7 @@ h3,
 .brand-avatar {
     width: 48px;
     height: 48px;
-    background: #1a5663;
+    background: #3b82f6;
     color: #fff;
     border-radius: 8px;
     display: flex;
@@ -445,7 +447,7 @@ h3,
 }
 
 .hero-content-card h1 span {
-    color: #1a5663;
+    color: #3b82f6;
 }
 
 .hero-description {
@@ -465,7 +467,7 @@ h3,
 }
 
 .btn-teal {
-    background: #1a5663;
+    background: #3b82f6;
     color: #fff;
     padding: 0.75rem 1.5rem;
     border-radius: 12px;
@@ -475,18 +477,18 @@ h3,
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 6px rgba(26, 86, 99, 0.2);
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
 }
 
 .btn-teal:hover {
-    background: #0f766e;
+    background: #2563eb;
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(26, 86, 99, 0.3);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
 }
 
 .btn-teal:active {
     transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(26, 86, 99, 0.2);
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
 }
 
 .btn-white {
@@ -506,7 +508,7 @@ h3,
 
 .btn-white:hover {
     background: #f8fafc;
-    border-color: #1a5663;
+    border-color: #3b82f6;
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
@@ -701,8 +703,8 @@ h3,
 
 .timeline-year {
     display: block;
-    color: #1a5663;
-    /* Teal color for years */
+    color: #60a5fa;
+    /* Light blue color for years */
     font-weight: 700;
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
@@ -863,7 +865,7 @@ h3,
     display: block;
     font-size: 3rem;
     font-weight: 700;
-    color: #1a5663;
+    color: #3b82f6;
     margin-bottom: 0.5rem;
 }
 
@@ -899,9 +901,9 @@ h3,
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: #1a5663;
+    border-color: #3b82f6;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(26, 86, 99, 0.1), 0 4px 12px rgba(26, 86, 99, 0.15);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 4px 12px rgba(59, 130, 246, 0.15);
     transform: translateY(-2px);
 }
 
@@ -1070,7 +1072,7 @@ h3,
 }
 
 .btn-teal-large {
-    background: #0f766e;
+    background: #3b82f6;
     color: white;
     padding: 1rem 2rem;
     border-radius: 50px;
@@ -1083,7 +1085,7 @@ h3,
 }
 
 .btn-teal-large:hover {
-    background: #0d9488;
+    background: #2563eb;
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
@@ -1120,7 +1122,7 @@ h3,
 
 .footer-logo i {
     font-size: 1.5rem;
-    color: #1a5663;
+    color: #60a5fa;
 }
 
 .footer-description {
@@ -1148,10 +1150,10 @@ h3,
 }
 
 .social-links a:hover {
-    background: #1a5663;
+    background: #3b82f6;
     color: #ffffff;
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(26, 86, 99, 0.3);
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
 }
 
 .footer-heading {
@@ -1170,7 +1172,7 @@ h3,
     left: 0;
     width: 40px;
     height: 2px;
-    background: #1a5663;
+    background: #3b82f6;
 }
 
 .footer-links {
@@ -1197,7 +1199,7 @@ h3,
 
 .footer-links a i {
     font-size: 0.7rem;
-    color: #1a5663;
+    color: #60a5fa;
 }
 
 .footer-contact {
@@ -1216,7 +1218,7 @@ h3,
 }
 
 .footer-contact i {
-    color: #1a5663;
+    color: #60a5fa;
     font-size: 1.1rem;
     margin-top: 2px;
     flex-shrink: 0;
@@ -1266,7 +1268,7 @@ h3,
     right: 30px;
     width: 50px;
     height: 50px;
-    background: #1a5663;
+    background: #3b82f6;
     color: #ffffff;
     border: none;
     border-radius: 50%;
@@ -1275,7 +1277,7 @@ h3,
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    box-shadow: 0 4px 12px rgba(26, 86, 99, 0.3);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 100;
     opacity: 0;
@@ -1290,9 +1292,9 @@ h3,
 }
 
 .back-to-top:hover {
-    background: #0f766e;
+    background: #2563eb;
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(26, 86, 99, 0.4);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
 }
 
 .back-to-top:active {
