@@ -1,10 +1,10 @@
 :root {
-    --primary-color: #1e40af;
-    /* Deep blue */
-    --secondary-color: #3b82f6;
-    /* Bright blue */
-    --accent-color: #60a5fa;
-    /* Light blue accent */
+    --primary-color: #475569;
+    /* Slate gray */
+    --secondary-color: #64748b;
+    /* Medium gray */
+    --accent-color: #94a3b8;
+    /* Light gray accent */
     --text-color: #333;
     --text-light: #666;
     --bg-light: #f8fafc;
@@ -190,8 +190,8 @@ h3,
 
 .logo-icon {
     font-size: 1.5rem;
-    color: #3b82f6;
-    background: #eff6ff;
+    color: #475569;
+    background: rgba(148, 163, 184, 0.1);
     width: 44px;
     height: 44px;
     display: flex;
@@ -295,8 +295,8 @@ h3,
 }
 
 .search-btn {
-    background: #3b82f6;
-    /* Bright blue */
+    background: rgba(71, 85, 105, 0.8);
+    backdrop-filter: blur(10px);
     color: white;
     border: none;
     padding: 0.85rem;
@@ -312,7 +312,7 @@ h3,
 }
 
 .search-btn:hover {
-    background: #2563eb;
+    background: rgba(71, 85, 105, 1);
 }
 
 .footer-note {
@@ -335,25 +335,26 @@ h3,
 
 /* Site Header */
 .site-header {
-    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-    border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+    background: rgba(71, 85, 105, 0.75);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 100%;
     z-index: 100;
-    box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-header.scrolled {
-    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
-    box-shadow: 0 6px 24px rgba(30, 64, 175, 0.4);
+    background: rgba(71, 85, 105, 0.9);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
 }
 
 .header-top-bar {
-    background: rgba(30, 64, 175, 0.3);
+    background: rgba(71, 85, 105, 0.3);
     padding: 0.5rem 1.5rem;
     font-size: 0.8rem;
     color: #ffffff;
@@ -378,7 +379,7 @@ h3,
 .brand-avatar {
     width: 48px;
     height: 48px;
-    background: #3b82f6;
+    background: rgba(255, 255, 255, 0.2);
     color: #fff;
     border-radius: 8px;
     display: flex;
@@ -449,7 +450,7 @@ h3,
 }
 
 .hero-content-card h1 span {
-    color: #3b82f6;
+    color: #64748b;
 }
 
 .hero-description {
@@ -469,7 +470,8 @@ h3,
 }
 
 .btn-teal {
-    background: #3b82f6;
+    background: rgba(71, 85, 105, 0.85);
+    backdrop-filter: blur(10px);
     color: #fff;
     padding: 0.75rem 1.5rem;
     border-radius: 12px;
@@ -479,18 +481,18 @@ h3,
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .btn-teal:hover {
-    background: #2563eb;
+    background: rgba(71, 85, 105, 1);
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .btn-teal:active {
     transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .btn-white {
@@ -509,8 +511,8 @@ h3,
 }
 
 .btn-white:hover {
-    background: #f8fafc;
-    border-color: #3b82f6;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: #64748b;
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
@@ -705,8 +707,8 @@ h3,
 
 .timeline-year {
     display: block;
-    color: #60a5fa;
-    /* Light blue color for years */
+    color: #94a3b8;
+    /* Light gray color for years */
     font-weight: 700;
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
