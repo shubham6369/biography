@@ -19,7 +19,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Close sidebar when clicking a link (on mobile)
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+            // Smooth scroll to section
+            const href = link.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    const offset = 80; // Adjust for header height
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
             if (window.innerWidth <= 768) {
                 sidebar.classList.remove('active');
             }
@@ -31,26 +49,175 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Simple scroll reveal effect
-    const revealOnScroll = () => {
-        const sections = document.querySelectorAll('.section');
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if (sectionTop < windowHeight * 0.8) {
-                section.style.opacity = '1';
-                section.style.transform = 'translateY(0)';
-            }
-        });
+    // ===========================
+    // Enhanced Scroll Reveal with Intersection Observer
+    // ===========================
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     };
 
-    // Initial styles for reveal effect
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add stagger delay for multiple elements
+                setTimeout(() => {
+                    entry.target.classList.add('animated');
+                }, index * 100);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all sections
     document.querySelectorAll('.section').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'all 0.8s ease-out';
+        section.classList.add('animate-on-scroll');
+        observer.observe(section);
     });
 
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll(); // Trigger once on load
+    // Observe timeline items individually with stagger
+    document.querySelectorAll('.timeline-item').forEach((item, index) => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateX(-30px)';
+        item.style.transition = 'all 0.6s ease-out';
+        item.style.transitionDelay = `${index * 0.2}s`;
+
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                    timelineObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        timelineObserver.observe(item);
+    });
+
+    // ===========================
+    // Counter Animation for Stats
+    // ===========================
+    const animateCounter = (element, target, suffix = '', duration = 2000) => {
+        let current = 0;
+        const increment = target / (duration / 16); // 60fps
+        const isPercentage = suffix === '%';
+        const isTime = suffix === 'h';
+
+        const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+                if (isPercentage || isTime) {
+                    element.textContent = Math.floor(current) + suffix;
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = target + suffix;
+            }
+        };
+
+        updateCounter();
+    };
+
+    // Counter observer
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const statNumber = entry.target.querySelector('.stat-number, .value');
+                if (statNumber && !statNumber.dataset.counted) {
+                    statNumber.dataset.counted = 'true';
+                    const text = statNumber.textContent;
+
+                    // Parse the number and suffix
+                    if (text.includes('%')) {
+                        const num = parseInt(text);
+                        animateCounter(statNumber, num, '%');
+                    } else if (text.includes('h')) {
+                        const num = parseInt(text);
+                        animateCounter(statNumber, num, 'h');
+                    } else if (text.includes('+')) {
+                        const num = parseInt(text);
+                        animateCounter(statNumber, num, '+');
+                    } else if (text.includes('k')) {
+                        const num = parseFloat(text);
+                        animateCounter(statNumber, num, 'k');
+                    }
+                }
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    // Observe stat cards
+    document.querySelectorAll('.stat-card, .stat-box').forEach(card => {
+        counterObserver.observe(card);
+    });
+
+    // ===========================
+    // Q&A Accordion Animation
+    // ===========================
+    document.querySelectorAll('.qa-card').forEach(card => {
+        const header = card.querySelector('.qa-header');
+        const body = card.querySelector('.qa-body');
+
+        // Initially hide all except active
+        if (!card.classList.contains('active')) {
+            body.style.maxHeight = '0';
+            body.style.opacity = '0';
+        } else {
+            body.style.maxHeight = body.scrollHeight + 'px';
+            body.style.opacity = '1';
+        }
+
+        header.addEventListener('click', () => {
+            const isActive = card.classList.contains('active');
+
+            // Close all other cards
+            document.querySelectorAll('.qa-card').forEach(otherCard => {
+                if (otherCard !== card) {
+                    otherCard.classList.remove('active');
+                    const otherBody = otherCard.querySelector('.qa-body');
+                    otherBody.style.maxHeight = '0';
+                    otherBody.style.opacity = '0';
+                }
+            });
+
+            // Toggle current card
+            card.classList.toggle('active');
+            if (!isActive) {
+                body.style.maxHeight = body.scrollHeight + 'px';
+                body.style.opacity = '1';
+            } else {
+                body.style.maxHeight = '0';
+                body.style.opacity = '0';
+            }
+        });
+    });
+
+    // ===========================
+    // Hero Button Stagger Animation
+    // ===========================
+    const heroButtons = document.querySelectorAll('.hero-button-group .btn');
+    heroButtons.forEach((btn, index) => {
+        btn.style.opacity = '0';
+        btn.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+            btn.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            btn.style.opacity = '1';
+            btn.style.transform = 'translateY(0)';
+        }, 300 + (index * 150));
+    });
+
+    // ===========================
+    // Smooth Page Load Animation
+    // ===========================
+    window.addEventListener('load', () => {
+        document.body.style.opacity = '0';
+        setTimeout(() => {
+            document.body.style.transition = 'opacity 0.5s ease-in';
+            document.body.style.opacity = '1';
+        }, 100);
+    });
 });

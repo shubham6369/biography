@@ -13,6 +13,126 @@
     --glass-bg: rgba(255, 255, 255, 0.95);
 }
 
+/* ===========================
+   Keyframe Animations
+   =========================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(26, 86, 99, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(26, 86, 99, 0.8);
+    }
+}
+
+/* Animation Utility Classes */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -127,7 +247,20 @@ h3,
     border-radius: 12px;
     font-size: 0.95rem;
     font-weight: 400;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #1a5663;
+    transition: width 0.3s ease;
 }
 
 .nav-links li.active a {
@@ -138,6 +271,11 @@ h3,
 .nav-links a:hover {
     background: #f8fafc;
     color: #1e293b;
+    transform: translateX(5px);
+}
+
+.nav-links a:hover::before {
+    width: 100%;
 }
 
 .nav-links i {
@@ -318,6 +456,19 @@ h3,
     gap: 0.5rem;
     font-weight: 600;
     text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(26, 86, 99, 0.2);
+}
+
+.btn-teal:hover {
+    background: #0f766e;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(26, 86, 99, 0.3);
+}
+
+.btn-teal:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(26, 86, 99, 0.2);
 }
 
 .btn-white {
@@ -331,6 +482,15 @@ h3,
     gap: 0.5rem;
     font-weight: 600;
     text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.btn-white:hover {
+    background: #f8fafc;
+    border-color: #1a5663;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .btn-gray {
@@ -343,6 +503,14 @@ h3,
     gap: 0.5rem;
     font-weight: 600;
     text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-gray:hover {
+    background: #e2e8f0;
+    color: #1a202c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .hero-portrait-container {
@@ -365,6 +533,13 @@ h3,
     display: block;
     filter: grayscale(1);
     /* Black and white as in screenshot */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: float 6s ease-in-out infinite;
+}
+
+.portrait-wrapper img:hover {
+    filter: grayscale(0.5);
+    transform: scale(1.02);
 }
 
 @media (max-width: 768px) {
@@ -459,6 +634,12 @@ h3,
     box-shadow: var(--shadow);
     text-align: center;
     border-bottom: 4px solid var(--accent-color);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .stat-number {
@@ -540,6 +721,12 @@ h3,
     padding: 1rem;
     border-radius: 20px;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.friend-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 30px -3px rgba(0, 0, 0, 0.4);
 }
 
 .friend-image-wrapper {
@@ -621,6 +808,7 @@ h3,
 
 .doc-card:hover {
     transform: translateX(10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .doc-card i {
@@ -687,14 +875,16 @@ h3,
     border: 1px solid #e2e8f0;
     border-radius: 12px;
     font-size: 1rem;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #ffffff;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: #1a5663;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(26, 86, 99, 0.1);
+    box-shadow: 0 0 0 3px rgba(26, 86, 99, 0.1), 0 4px 12px rgba(26, 86, 99, 0.15);
+    transform: translateY(-2px);
 }
 
 /* Law & Rules Section Refined */
@@ -725,8 +915,9 @@ h3,
 }
 
 .legal-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.01);
     background: #203145;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
 .legal-card h3 {
@@ -797,7 +988,13 @@ h3,
     background: #1a2a3a;
     border-radius: 16px;
     padding: 1.5rem;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.qa-card:hover {
+    background: #203145;
+    transform: translateX(5px);
 }
 
 .qa-header {
@@ -810,6 +1007,11 @@ h3,
 .qa-header i {
     color: #94a3b8;
     font-size: 0.9rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.qa-card.active .qa-header i {
+    transform: rotate(180deg);
 }
 
 .qa-header h3 {
@@ -823,6 +1025,15 @@ h3,
     padding-left: 2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding-top: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.qa-card.active .qa-body {
+    max-height: 500px;
+    opacity: 1;
 }
 
 .qa-body ul {
