@@ -2,18 +2,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menuToggle');
     const closeSidebar = document.getElementById('closeSidebar');
     const sidebar = document.getElementById('sidebar');
+    const menuOverlay = document.getElementById('menuOverlay');
     const navLinks = document.querySelectorAll('.nav-links a');
 
     // Toggle Sidebar for Mobile
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             sidebar.classList.add('active');
+            menuOverlay.classList.add('active');
         });
     }
 
     if (closeSidebar) {
         closeSidebar.addEventListener('click', () => {
             sidebar.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+    }
+
+    // Close sidebar when clicking overlay
+    if (menuOverlay) {
+        menuOverlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            menuOverlay.classList.remove('active');
         });
     }
 
@@ -40,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (window.innerWidth <= 768) {
                 sidebar.classList.remove('active');
+                menuOverlay.classList.remove('active');
             }
 
             // Remove active class from all links
