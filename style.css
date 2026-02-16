@@ -337,8 +337,11 @@ h3,
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(241, 245, 249, 0.5);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 100;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -410,6 +413,7 @@ h3,
 /* Hero Section Refined */
 .hero-section {
     padding: 2rem 1.5rem;
+    padding-top: 7rem;
     background: #f1f5f9;
 }
 
