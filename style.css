@@ -395,7 +395,8 @@ h3,
 }
 
 .brand-text p {
-    color: #718096;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.85);
     margin: 0;
 }
 
