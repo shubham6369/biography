@@ -220,4 +220,22 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.opacity = '1';
         }, 100);
     });
+
+    // ===========================
+    // Header Transparency on Scroll
+    // ===========================
+    const header = document.querySelector('.site-header');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+
+        lastScroll = currentScroll;
+    });
 });
